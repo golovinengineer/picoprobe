@@ -1,4 +1,20 @@
+# == DO NEVER EDIT THE NEXT LINES for Raspberry Pi Pico VS Code Extension to work ==
+if(WIN32)
+   set(USERHOME $ENV{USERPROFILE})
+else()
+    set(USERHOME $ENV{HOME})
+endif()
+set(PICO_SDK_PATH ${USERHOME}/.pico-sdk/sdk/1.5.1)
+set(PICO_TOOLCHAIN_PATH ${USERHOME}/.pico-sdk/toolchain/13_2_Rel1)
+if(WIN32)
+    set(pico-sdk-tools_DIR ${USERHOME}/.pico-sdk/tools/1.5.1)
+    include(${pico-sdk-tools_DIR}/pico-sdk-tools-config.cmake)
+    include(${pico-sdk-tools_DIR}/pico-sdk-tools-config-version.cmake)
+endif()
+# ====================================================================================
 cmake_minimum_required(VERSION 3.12)
+
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 include(pico_sdk_import.cmake)
 
@@ -48,10 +64,10 @@ target_compile_definitions (debugprobe PRIVATE
 
 option (DEBUG_ON_PICO "Compile firmware for the Pico instead of Debug Probe" OFF)
 if (DEBUG_ON_PICO)
-    target_compile_definitions (debugprobe PRIVATE 
+    target_compile_definitions (debugprobe PRIVATE
 	DEBUG_ON_PICO=1
     )
-    set_target_properties(debugprobe PROPERTIES 
+    set_target_properties(debugprobe PROPERTIES
         OUTPUT_NAME "debugprobe_on_pico"
     )
 endif ()

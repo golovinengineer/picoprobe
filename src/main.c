@@ -91,6 +91,32 @@ int main(void) {
 
     DAP_Setup();
 
+    /* PWRMUX_EN */
+    gpio_init(22);
+    gpio_set_dir(22, GPIO_OUT);
+    gpio_put(22, 1);
+
+    /* PWRMUX_SEL */
+    gpio_init(21);
+    gpio_set_dir(21, GPIO_OUT);
+    // gpio_put(21, 1); // 5V
+    gpio_put(21, 0); // 3.3V
+
+    /* PWRMUX_STATE */
+    gpio_init(17);
+    gpio_set_dir(17, GPIO_IN);
+    gpio_pull_up(17);
+
+    /* TRG_OE */
+    gpio_init(11);
+    gpio_set_dir(11, GPIO_OUT);
+    gpio_put(11, 1);
+
+    /* TRG_RST */
+    gpio_init(10);
+    gpio_set_dir(10, GPIO_IN);
+    gpio_set_pulls(10, false, false);
+
     led_init();
 
     probe_info("Welcome to debugprobe!\n");

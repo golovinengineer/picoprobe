@@ -28,7 +28,7 @@
 
 #define PROBE_IO_SWDI
 #define PROBE_CDC_UART
-// No reset pin 
+// No reset pin
 
 // PIO config
 #define PROBE_SM 0
@@ -50,6 +50,7 @@
 #define PROBE_UART_RX_LED 7
 #define PROBE_UART_TX_LED 8
 
-#define PROBE_PRODUCT_STRING "Debug Probe (CMSIS-DAP)"
+// #define PROBE_PRODUCT_STRING "Debug Probe (CMSIS-DAP)"
+#define PROBE_PRODUCT_STRING "CMS Programmer"
 
 #endif
