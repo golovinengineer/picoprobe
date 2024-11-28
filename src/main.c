@@ -143,8 +143,8 @@ main(void)
   /* PWRMUX_SEL */
   gpio_init(21);
   gpio_set_dir(21, GPIO_OUT);
-  // gpio_put(21, 1); // 5V
-  gpio_put(21, 0); // 3.3V
+  gpio_put(21, 1); // 5V
+  // gpio_put(21, 0); // 3.3V
 
   /* PWRMUX_STATE */
   gpio_init(17);
@@ -161,7 +161,7 @@ main(void)
   gpio_set_dir(10, GPIO_IN);
   gpio_set_pulls(10, false, false);
 
-  led_init();
+  // led_init();
 
   probe_info("Welcome to debugprobe!\n");
 
